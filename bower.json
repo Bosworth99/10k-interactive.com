@@ -1,0 +1,34 @@
+{
+  "name": "10k-interactive.com",
+  "main": "index.js",
+  "version": "0.0.1",
+  "description": "10k interactive dot com.",
+  "keywords": [
+    "peanutbutter",
+    "cannibal",
+    "tyrannosaur"
+  ],
+  "dependencies": {
+    "jquery": null,
+    "backbone": null,
+    "underscore": null,
+    "requirejs": null,
+    "marionette": null,
+    "underscore.string": null,
+    "backbone.radio": "~0.9.0",
+	"backbone.advice": "~1.0.2"
+  },
+  "authors": [
+    "josh@joshbosworth.com"
+  ],
+  "license": "MIT",
+  "homepage": "www.joshbosworth.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
