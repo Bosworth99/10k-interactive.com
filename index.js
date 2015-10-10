@@ -2,7 +2,7 @@
 
 require.config({
     urlArgs: 'v=' + (new Date()).getTime(),
-    baseUrl: 'Javascript/app',
+    baseUrl: 'javascript/app',
     paths: {
         jquery                 : '../vendor/jquery/dist/jquery',
         underscore             : '../vendor/underscore/underscore',
@@ -35,7 +35,7 @@ var app = {} || window.app;
 (function(){
 	"use strict";
 
-    require( [ 'app' ], function (App) {
+    require( [ 'jquery', 'underscore', 'backbone', 'app' ], function ( jQuery, Underscore, Backbone, App) {
 
         var Application;
 
