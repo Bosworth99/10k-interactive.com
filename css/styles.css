@@ -1,0 +1,79 @@
+/* //////////////////////////////////////////////////////////////////////////*/
+/* */
+/*  APP : 10k-interactive.com */
+/*  URL : www.10k-interactive.com */
+/*  Authors : josh@joshbosworth.com */
+/* */
+/* //////////////////////////////////////////////////////////////////////////*/
+/* vars  */
+/* VARS /////////////////////////////////////////////////////////////////////*/
+/* COLORS */
+/* TYPE */
+/* LINKS */
+/* BUTTONS */
+/* NAV*/
+/* TABLES */
+/* TOASTER */
+/* GRIDS /////////////////////////////////////////////////////////////////////*/
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg); }
+  to {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg); } }
+@keyframes rotating {
+  from {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg); }
+  to {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg); } }
+
+.rotating {
+  -webkit-animation: rotating 6s linear infinite;
+          animation: rotating 6s linear infinite; }
+
+/* base styles  */
+html {
+  height: 100%;
+  width: 100%; }
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #585858;
+  padding: 0;
+  margin: 0;
+  background-image: url("../images/bg/desktop.v3.jpg");
+  background-position: center center; }
+
+#main {
+  background-color: white;
+  border-radius: 3px;
+  border: darkgrey;
+  box-shadow: 0 3px 3px 3px rgba(50, 50, 50, 0.5);
+  width: 500px;
+  height: 500px;
+  max-width: 90%;
+  max-height: 90%; }
+  #main h1 {
+    color: #666;
+    height: 1em;
+    width: 100%;
+    text-align: center;
+    font-family: arial, sans serif;
+    text-shadow: 0 2px 2px rgba(50, 50, 50, 0.3);
+    transition: all 0.2s; }
+  #main:hover h1 {
+    color: #5342E7; }
+
+.centered {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+/*# sourceMappingURL=styles.css.map */

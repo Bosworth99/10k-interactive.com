@@ -1,0 +1,50 @@
+html{
+    height:100%;
+    width:100%;
+}
+
+body {
+    height:100%;
+    width:100%;
+    background-color:rgb(88,88,88);
+    padding:0;
+    margin:0;
+
+    background-image: url('../images/bg/desktop.v3.jpg');
+    background-position: center center;
+}
+
+#main{
+    background-color:white;
+    border-radius:3px;
+    border:darkgrey;
+    box-shadow: 0 3px 3px 3px rgba(50,50,50, .5);
+    width:500px;
+    height:500px;
+    max-width:90%;
+    max-height:90%;
+
+    h1 {
+        color:#666;
+        height:1em;
+        width:100%;
+        text-align:center;
+        font-family:arial, sans serif;
+        text-shadow:0 2px 2px rgba(50,50,50, .3);
+        transition:all .2s;
+    }
+
+    &:hover h1{
+        color:#5342E7;
+    }
+
+}
+
+.centered{
+    position:absolute;
+    margin:auto;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
