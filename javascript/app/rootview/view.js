@@ -1,10 +1,17 @@
-// # Controller/View
+// # RootView/View
 
 define(function(require){
     'use strict';
 
-    var Marionette     = require('backbone.marionette');
-    var Template       = require('requireText!rootview/template.html');
+    // @includes
+    var Dispatcher      = require('dispatcher');
+    var Marionette      = require('backbone.marionette');
+
+    // @componentes
+    var Template        = require('requireText!rootview/template.html');
+
+    // @modules
+    var HomeView        = require('home/view');
 
     // CLASS //////////////////////////////////////////////////////////////////
 
@@ -17,34 +24,38 @@ define(function(require){
         template: _.template(Template),
 
         regions: {
-            layout : '#layout'
+            header  : '#site-header',
+            content : '#site-content',
+            footer  : '#site-footer',
+            fixed   : '#site-fixed'
         },
 
         initialize: function () {
 
+            this.addEventHandlers();
+
+            this.render();
         },
+
+        addEventHandlers : function(){ },
 
         // MODEL EVENTS ///////////////////////////////////////////////////////
         modelEvents: {
-            'render:init' : 'render'
+            'render:content:home' : 'onRenderContentHome'
         },
 
-        onRender : function(){
-            console.log('RootViewView::onRender');
+        onRenderContentHome : function(){
+
+            if (this.getRegion('content')){
+
+                this.showChildView('content', new HomeView());
+            }
+
         },
 
         // DOM EVENTS ///////////////////////////////////////////////////////
 
-        events : {
-            'click [data-action="clickme"]' : 'onActionClickMe'
-        },
-
-        onActionClickMe : function(e){
-            e.preventDefault();
-
-            console.log('clicky clicky');
-
-        }
+        events : {}
 
 
     });

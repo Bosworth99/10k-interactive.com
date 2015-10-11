@@ -11,22 +11,35 @@ require.config({
         'backbone.radio'       : '../vendor/backbone.radio/build/backbone.radio',
         'backbone.marionette'  : '../vendor/marionette/lib/backbone.marionette',
         'backbone.advice'      : '../vendor/backbone.advice/advice',
+
+        tweenmax               :  '../vendor/gsap/src/minified/TweenMax.min'
     },
 
     shim: {
 
-      // Backbone
-      "backbone": {
+        //jQuery
+        'jquery' :{
 
-         // Depends on underscore/lodash and jQuery
-         "deps": ["underscore", "jquery"],
+            'exports' : 'jQuery'
+        },
 
-         // Exports the global window.Backbone object
-         "exports": "Backbone"
+        // Backbone
+        'backbone': {
 
-      },
+            // Depends on underscore/lodash and jQuery
+            'deps': ['underscore', 'jquery'],
 
-   }
+            // Exports the global window.Backbone object
+            'exports': 'Backbone'
+        },
+
+        // GSAP
+        'tweenmax' : {
+
+            'exports' : 'TweenMax'
+        }
+
+    }
 
 });
 
@@ -35,16 +48,13 @@ var app = {} || window.app;
 (function(){
 	"use strict";
 
-    require( [ 'jquery', 'underscore', 'backbone', 'app' ], function ( jQuery, Underscore, Backbone, App) {
+    require( [ 'jquery', 'underscore', 'backbone', 'app' ], function ( jQuery, Underscore, Backbone, App ) {
 
         var Application;
 
         $(function () {
 
             window.app = Application = new App();
-            window.app.name 	= '10k-interactive.com';
-			window.app.version 	= '0.1';
-
             window.app.start();
         });
 

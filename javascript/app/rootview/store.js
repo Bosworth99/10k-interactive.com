@@ -6,7 +6,7 @@ define(function (require) {
     'use strict';
 
     var Dispatcher      = require('dispatcher');
-    var RootViewView    = require('rootview/view');
+    var Backbone        = require('backbone');
 
     // CLASS //////////////////////////////////////////////////////////////////
 
@@ -15,11 +15,23 @@ define(function (require) {
         name : 'RootViewStore',
 
         initialize: function () {
+            console.log('RootViewStore::initialize');
 
-            // maybe push this to app.js
-            this.view = new RootViewView({model:this});
+            this.addEventHandlers();
+        },
 
-            this.trigger('render:init');
+        addEventHandlers : function(){
+
+            var _this = this;
+
+            Dispatcher.bus.on('module:ready:home', function(args,e){
+                _this.onModuleReadyHome(args,e);
+            });
+        },
+
+        onModuleReadyHome : function(args,e){
+
+            this.trigger('render:content:home');
         }
 
     });
