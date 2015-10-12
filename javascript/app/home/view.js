@@ -79,12 +79,10 @@ define(function (require) {
 
         onChangeBg : function(){
 
-            console.log('HomeView::onChangeBg', this.model.get('bgsrc'), this.$main );
-
-            var bgsrc = String( 'url("' + this.model.get('bgsrc') + '")');
+            var background = String( 'url("' + this.model.get('bgsrc') + '")');
 
             this.$main.css({
-                'background-image' : bgsrc
+                'background-image' : background
             });
 
         },

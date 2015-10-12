@@ -102,11 +102,11 @@ define(function (require) {
             this.bgsrcTimer = window.setInterval( function(){
 
                 var list   = _this.get('img_bg');
-                var bgsrc = _.shuffle( list )[0];
+                var bgsrc = _.shuffle( list )[0].src;
 
                 _this.set('bgsrc', bgsrc);
 
-            }, 2000);
+            }, 25000);
 
         }
 
