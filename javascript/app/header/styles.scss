@@ -1,0 +1,38 @@
+._10k_brand{
+    float:left;
+    display:inline-block;
+
+    ._10k_logo{
+        width:150px;
+        display:inline-block;
+        position:relative;
+        top:0;
+        left:5px;
+
+        img{
+            position:absolute;
+            top:0;
+            left:0;
+            transition:all 250ms;
+        }
+
+        #logo-wht{ z-index:3; }
+        #logo-red{ z-index:2; }
+        #logo-blk{ z-index:1; }
+
+        &:hover{
+            #logo-wht{ left:4px; top:-4px; }
+            #logo-red{ left:-4px; top:4px; }
+            #logo-blk{ left:-4px; top:-4px; }
+        }
+
+    }
+}
+
+._10k_nav{
+    display:inline-block;
+    position:absolute;
+    top:10px;
+    right:15px;
+}
+

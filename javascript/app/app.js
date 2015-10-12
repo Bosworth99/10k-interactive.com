@@ -15,8 +15,11 @@ define(function (require) {
 
     // @modules
     var Router          = require('router');
+
     var RootView        = require('rootview/store');
     var RootViewView    = require('rootview/view');
+
+    var Header          = require('header/store');
     var Home            = require('home/store');
 
     // CLASS //////////////////////////////////////////////////////////////////
@@ -53,8 +56,10 @@ define(function (require) {
 
             this.modules            = {};
             this.modules.rootview   = RootView;
+            this.modules.header     = Header;
             this.modules.home       = Home;
 
+            // have to instatiate the root view manually
             this.rootView           = new RootViewView( { model : this.modules.rootview } );
         },
 

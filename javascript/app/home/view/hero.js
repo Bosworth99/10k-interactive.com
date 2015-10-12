@@ -9,7 +9,6 @@ define(function (require) {
     var TweenMax    = require('tweenmax');
 
     // @components
-    var Store       = require('home/store');
     var Template    = require('requireText!home/template/hero.html');
 
     // CLASS //////////////////////////////////////////////////////////////////
@@ -21,9 +20,7 @@ define(function (require) {
 
         initialize : function(){
 
-            this.$el.attr('class', '_10k_section-inner');
-
-            this.model = Store;
+            this.$el.attr('id', this.name + '_el');
         },
 
         onAttach : function(){},
@@ -31,11 +28,28 @@ define(function (require) {
         onDestroy : function(){},
 
         // MODEL EVENTS ///////////////////////////////////////////////////////
-        modelEvents: {},
+        modelEvents: {
+            'change:h1Text' : 'render'
+        },
+
+        onChangeH1 : function(){},
 
         // UI EVENTS //////////////////////////////////////////////////////////
         events: {
-            'click h1' : function(){ console.log('clicky clicky'); }
+            'click h1' : 'onClickH1'
+        },
+
+        onClickH1 : function(e){
+            e.preventDefault();
+
+            var t = this.$el.find('h1');
+
+            var action = 'module:home:click:h1';
+            var params = {
+                text : t.text()
+            };
+
+            Dispatcher.dispatch({action : action, params : params});
         }
 
 

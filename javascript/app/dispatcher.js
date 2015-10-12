@@ -36,7 +36,7 @@ define(function (require) {
                     params = payload.params;
                 }
 
-                //console.log('ACTION %s PAYLOAD %o', action, params);
+                console.log('ACTION %s PAYLOAD %o', action, params);
 
                 // trigger the action / param on the Radio.channel bus
                 this.bus.trigger( action, params );

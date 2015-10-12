@@ -11,6 +11,7 @@ define(function(require){
     var Template        = require('requireText!rootview/template.html');
 
     // @modules
+    var HeaderView      = require('header/view');
     var HomeView        = require('home/view');
 
     // CLASS //////////////////////////////////////////////////////////////////
@@ -41,7 +42,17 @@ define(function(require){
 
         // MODEL EVENTS ///////////////////////////////////////////////////////
         modelEvents: {
-            'render:content:home' : 'onRenderContentHome'
+            'render:header'         : 'onRenderHeader',
+            'render:content:home'   : 'onRenderContentHome'
+        },
+
+        onRenderHeader : function(){
+
+            if (this.getRegion('header')){
+
+                this.showChildView('header', new HeaderView());
+            }
+
         },
 
         onRenderContentHome : function(){

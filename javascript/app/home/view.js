@@ -34,7 +34,8 @@ define(function (require) {
 
         onAttach : function(){
 
-            this.$window = $(window);
+            this.$window        = $(window);
+            this.$main          = $('#main');
 
             this.addWindowEvents();
 
@@ -62,15 +63,30 @@ define(function (require) {
             }
         },
 
+        // modelEvent not registering... the above listener is.
         modelEvents: {
-            'render:children' : 'onRenderChildren'
+            'render:children'   : 'onRenderChildren',
+            'change:bgsrc'      : 'onChangeBg'
+
         },
 
         onRenderChildren : function(){
 
             if (this.getRegion('hero')) {
-                this.showChildView('hero', new HomeViewHero());
+                this.showChildView('hero', new HomeViewHero({model: this.model}));
             }
+        },
+
+        onChangeBg : function(){
+
+            console.log('HomeView::onChangeBg', this.model.get('bgsrc'), this.$main );
+
+            var bgsrc = String( 'url("' + this.model.get('bgsrc') + '")');
+
+            this.$main.css({
+                'background-image' : bgsrc
+            });
+
         },
 
         // UI EVENTS //////////////////////////////////////////////////////////
@@ -92,7 +108,6 @@ define(function (require) {
                 height: _this.$window.height()
             });*/
         }
-
 
     });
 

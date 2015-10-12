@@ -24,15 +24,29 @@ define(function (require) {
 
             var _this = this;
 
-            Dispatcher.bus.on('module:ready:home', function(args,e){
-                _this.onModuleReadyHome(args,e);
-            });
+            Dispatcher.bus.on('module:ready:header',    function(args){ _this.onModuleReadyHeader(args); });
+            Dispatcher.bus.on('module:opened:header',   function(args){ _this.onModuleOpenedHeader(args); });
+
+            Dispatcher.bus.on('module:ready:home',      function(args){ _this.onModuleReadyHome(args); });
+            Dispatcher.bus.on('module:opened:home',     function(args){ _this.onModuleOpenedHome(args); });
+
         },
 
-        onModuleReadyHome : function(args,e){
+        // Header
+        onModuleReadyHeader : function(args){
+
+            this.trigger('render:header');
+        },
+
+        onModuleOpenedHeader : function(args){},
+
+        // Home Page
+        onModuleReadyHome : function(args){
 
             this.trigger('render:content:home');
-        }
+        },
+
+        onModuleOpenedHome : function(args){}
 
     });
 

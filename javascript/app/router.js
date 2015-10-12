@@ -23,9 +23,7 @@ define(function(require){
 
             var _this = this;
 
-            Dispatcher.bus.on('module:opened:home', function(args,e){
-                _this.onModuleOpenedHome(args,e);
-            });
+            Dispatcher.bus.on('module:opened:home', function(args,e){ _this.onModuleOpenedHome(args,e); });
         },
 
         onModuleOpenedHome : function(args,e){
@@ -43,11 +41,13 @@ define(function(require){
         onEmptyRoute : function(){
 
             Dispatcher.dispatch({ action : 'module:open:home' });
+            Dispatcher.dispatch({ action : 'module:open:header' });
         },
 
         onRouteHome : function(){
 
             Dispatcher.dispatch({ action : 'module:open:home' });
+            Dispatcher.dispatch({ action : 'module:open:header' });
         }
 
     });
