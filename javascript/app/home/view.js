@@ -66,8 +66,7 @@ define(function (require) {
         // modelEvent not registering... the above listener is.
         modelEvents: {
             'render:children'   : 'onRenderChildren',
-            'change:bgsrc'      : 'onChangeBg'
-
+            'change:bgsrc'      : 'onChangeBG'
         },
 
         onRenderChildren : function(){
@@ -77,7 +76,7 @@ define(function (require) {
             }
         },
 
-        onChangeBg : function(){
+        onChangeBG : function(){
 
             var background = String( 'url("' + this.model.get('bgsrc') + '")');
 

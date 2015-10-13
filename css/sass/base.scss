@@ -14,7 +14,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: BebasNeueRegular, Arial, sans-serif;
+    font-family: $font-header, Arial, sans-serif;
     font-weight: 100;
 }
 
@@ -33,7 +33,7 @@ b,strong { font-weight:bold }
 /*  LINKS  ///////////////////////////////////////////////////////////////////*/
 a, a.link{
     color: $primary-link-color;
-    font-family : arsenalregular, Arial, sans-serif;
+    font-family : $font-body, Arial, sans-serif;
     display:inline-block;
     cursor:pointer;
     font-size:13px;

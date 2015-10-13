@@ -15,7 +15,7 @@ define(function (require) {
         name : 'RootViewStore',
 
         initialize: function () {
-            console.log('RootViewStore::initialize');
+            //console.log('RootViewStore::initialize');
 
             this.addEventHandlers();
         },

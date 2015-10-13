@@ -23,16 +23,22 @@ define(function (require) {
             this.$el.attr('id', this.name + '_el');
         },
 
-        onAttach : function(){},
+        onAttach : function(){
+
+            this.$title = this.$el.find('h1.title');
+        },
 
         onDestroy : function(){},
 
         // MODEL EVENTS ///////////////////////////////////////////////////////
         modelEvents: {
-            'change:h1Text' : 'render'
+            'change:h1Text' : 'onChangeTitle'
         },
 
-        onChangeH1 : function(){},
+        onChangeTitle : function(){
+
+            this.$title.text(this.model.get('h1Text'));
+        },
 
         // UI EVENTS //////////////////////////////////////////////////////////
         events: {
@@ -42,14 +48,9 @@ define(function (require) {
         onClickH1 : function(e){
             e.preventDefault();
 
-            var t = this.$el.find('h1');
+            var action = 'home:click:title';
 
-            var action = 'module:home:click:h1';
-            var params = {
-                text : t.text()
-            };
-
-            Dispatcher.dispatch({action : action, params : params});
+            Dispatcher.dispatch( { action : action } );
         }
 
 

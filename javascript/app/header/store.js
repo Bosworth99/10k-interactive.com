@@ -12,7 +12,7 @@ define(function (require) {
         name : 'HeaderStore',
 
         initialize: function () {
-            console.log('%s::initialize ', this.name );
+            //console.log('%s::initialize ', this.name );
 
             this.set('init', true);
 

@@ -7,6 +7,7 @@
 /* //////////////////////////////////////////////////////////////////////////*/
 /* vars  */
 /* VARS /////////////////////////////////////////////////////////////////////*/
+/* FONTS */
 /* COLORS */
 /* TYPE */
 /* LINKS */
@@ -86,7 +87,7 @@ body {
   margin: 0; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: BebasNeueRegular, Arial, sans-serif;
+  font-family: "arsenalregular", Arial, sans-serif;
   font-weight: 100; }
 
 h1, h2, h3, h4, h5, h6, p, strong, span, div, li, td {
@@ -123,7 +124,7 @@ b, strong {
 /*  LINKS  ///////////////////////////////////////////////////////////////////*/
 a, a.link {
   color: #FFFFFF;
-  font-family: arsenalregular, Arial, sans-serif;
+  font-family: "arsenalregular", Arial, sans-serif;
   display: inline-block;
   cursor: pointer;
   font-size: 13px;

@@ -1,5 +1,15 @@
 /* VARS /////////////////////////////////////////////////////////////////////*/
 
+/* FONTS */
+
+$font-bebas             : 'BebasNeueRegular';
+$font-arsenal           : 'arsenalregular';
+
+$font-header            : $font-arsenal;
+$font-body              : $font-arsenal;
+
+/* COLORS */
+
 $color-darkest          : #000;
 $color-darker           : #222;
 $color-dark             : #444;
@@ -8,7 +18,6 @@ $color-light            : #ddd;
 $color-lighter          : #eee;
 $color-lightest         : #fff;
 
-/* COLORS */
 
 $primary-background     : #fff;
 $secondary-background 	: #EBEBE5;

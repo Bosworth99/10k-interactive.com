@@ -12,12 +12,12 @@ define(function (require) {
         name : 'HomeStore',
 
         initialize: function () {
-            console.log('%s::initialize ', this.name );
+            //console.log('%s::initialize ', this.name );
 
             this.set('init', true);
 
-            this.set('h1Text',  'Handcrafted Internet');
-            this.set('bgsrc',   'desktop.v1.jpg' );
+            this.set('h1Text',  'HANDCRAFTED INTERNET');
+            this.set('bgsrc',   '/images/bg/desktop.v3.jpg' );
 
             this.addEventHandlers();
         },
@@ -49,7 +49,7 @@ define(function (require) {
             Dispatcher.bus.on('module:opened:home', function(args){ _this.onModuleOpenedHome(args); });
             Dispatcher.bus.on('module:closed:home', function(args){ _this.onModuleClosedHome(args); });
 
-            Dispatcher.bus.on('module:home:click:h1', function(args){ _this.onModuleHomeClickH1(args); });
+            Dispatcher.bus.on('home:click:title',   function(){     _this.onHomeClickTitle(); });
         },
 
         onModuleOpenHome : function(args){
@@ -67,11 +67,10 @@ define(function (require) {
             this.dectivate();
         },
 
-        onModuleHomeClickH1 : function(args){
+        onHomeClickTitle : function(){
 
-            var text = _.shuffle( args.text.split('') );
-
-            this.set( 'h1Text', text.join('') );
+            // listening in HomeViewHero
+            this.set( 'h1Text', this.setTitleText() );
 
             this.setHomeTitleTimer();
         },
@@ -87,8 +86,9 @@ define(function (require) {
             var _this = this;
             this.homeTitleInterval = window.setInterval(function(){
 
-                _this.set('h1Text', 'Handcrafted Internet');
-            }, 2500);
+                // listening in HomeViewHero
+                _this.set('h1Text', 'HANDCRAFTED INTERNET');
+            }, 5000);
 
         },
 
@@ -104,14 +104,34 @@ define(function (require) {
                 var list   = _this.get('img_bg');
                 var bgsrc = _.shuffle( list )[0].src;
 
+                // listening in HomeView
                 _this.set('bgsrc', bgsrc);
 
-            }, 25000);
+            }, 10000);
 
+        },
+
+        setTitleText : function(txt){
+
+            var titles = [
+                'handicraft rented ten',
+                'ten had frantic rented',
+                'frantic nether add ten',
+                'frantic hardened tent',
+                'ardent definer nth cat',
+                'ardent finch attender',
+                'chant draftier end ten',
+                'tender handicraft net',
+                'refracted ninth anted',
+                'rented frantic dent ha',
+                'tender craften hat inn',
+                'ardent defect ran thin',
+                'interface trend ad nth',
+                'den refracted at ninth'
+            ];
+
+            return _.shuffle( titles )[0].toUpperCase();
         }
-
-
-
 
     });
 

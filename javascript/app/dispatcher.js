@@ -5,6 +5,8 @@ define(function (require) {
     var Backbone   = require('backbone');
     var Radio      = require('backbone.radio');
 
+    var Config     = require('config');
+
     // CLASS //////////////////////////////////////////////////////////////////
     var Dispatcher =  Backbone.Model.extend({
 
@@ -36,7 +38,9 @@ define(function (require) {
                     params = payload.params;
                 }
 
-                console.log('ACTION %s PAYLOAD %o', action, params);
+                if ( Config.debug && typeof window.console !== 'undefined'){
+                    window.console.log('ACTION %s PAYLOAD %o', action, params);
+                }
 
                 // trigger the action / param on the Radio.channel bus
                 this.bus.trigger( action, params );
