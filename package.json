@@ -1,0 +1,25 @@
+{
+  "name": "10k",
+  "version": "1.0.0",
+  "description": "0.3",
+  "main": "index.js",
+  "dependencies": {
+    "bower": "^1.5.3",
+    "gulp-install": "^0.6.0",
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bosworth99/10k_interactive_com.git"
+  },
+  "author": "josh@joshbosworth.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bosworth99/10k_interactive_com/issues"
+  },
+  "homepage": "https://github.com/Bosworth99/10k_interactive_com#readme"
+}

@@ -11,6 +11,8 @@ define(function (require) {
     // @components
     var Template    = require('requireText!home/template/hero.html');
 
+    var BG          = require('shared/background/view');
+
     // CLASS //////////////////////////////////////////////////////////////////
     var HomeViewHero = Marionette.ItemView.extend({
 
@@ -26,9 +28,16 @@ define(function (require) {
         onAttach : function(){
 
             this.$title = this.$el.find('h1.title');
+
+            this.bg = new BG();
         },
 
-        onDestroy : function(){},
+        onDestroy : function(){
+            
+            if(this.bg){
+                this.bg.destroy();
+            }
+        },
 
         // MODEL EVENTS ///////////////////////////////////////////////////////
         modelEvents: {

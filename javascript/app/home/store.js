@@ -17,7 +17,6 @@ define(function (require) {
             this.set('init', true);
 
             this.set('h1Text',  'HANDCRAFTED INTERNET');
-            this.set('bgsrc',   '/images/bg/desktop.v3.jpg' );
 
             this.addEventHandlers();
         },
@@ -26,19 +25,11 @@ define(function (require) {
 
             Dispatcher.dispatch({action:'module:ready:home'});
 
-            this.setBGTimer();
         },
 
         dectivate : function(){},
 
-        defaults : {
-
-            img_bg : [
-                { src : '/images/bg/desktop.v1.jpg' },
-                { src : '/images/bg/desktop.v2.jpg' },
-                { src : '/images/bg/desktop.v3.jpg' }
-            ]
-        },
+        defaults : {},
 
         // DISPATCHER EVENTS //////////////////////////////////////////////////
         addEventHandlers : function(){
@@ -89,25 +80,6 @@ define(function (require) {
                 // listening in HomeViewHero
                 _this.set('h1Text', 'HANDCRAFTED INTERNET');
             }, 5000);
-
-        },
-
-        setBGTimer : function(){
-
-            if (this.bgsrcTimer){
-                window.clearInterval((this.bgsrcTimer));
-            }
-
-            var _this = this;
-            this.bgsrcTimer = window.setInterval( function(){
-
-                var list   = _this.get('img_bg');
-                var bgsrc = _.shuffle( list )[0].src;
-
-                // listening in HomeView
-                _this.set('bgsrc', bgsrc);
-
-            }, 10000);
 
         },
 
