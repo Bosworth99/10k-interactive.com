@@ -19,7 +19,7 @@ define(function (require) {
 
         initialize : function(){
 
-            this.$el.attr('id', this.name + '_el');
+            this.$el.attr('data-el', this.name);
         },
 
         onAttach : function(){

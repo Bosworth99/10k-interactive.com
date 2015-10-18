@@ -16,15 +16,15 @@ define(function (require) {
 
             this.set('init', true);
 
-            this.set('src',   '/images/bg/desktop.v3.jpg' );
+            this.set('src', '/images/bg/desktop.v3.jpg' );
+            this.set('top', 'one');
 
             this.addEventHandlers();
-        },
-
-        activate : function(){
 
             this.setBGTimer();
         },
+
+        activate : function(){},
 
         dectivate : function(){},
 
@@ -41,26 +41,45 @@ define(function (require) {
         addEventHandlers : function(){
 
             var _this = this;
+
+            Dispatcher.bus.on('window:resize', function(args){ _this.onResize(args); });
         },
 
         setBGTimer : function(){
 
             if (this.srcTimer){
-                window.clearInterval((this.srcTimer));
+                window.clearInterval(this.srcTimer);
             }
 
             var _this = this;
+
             this.srcTimer = window.setInterval( function(){
-
-                var list   = _this.get('img_bg');
-                var src = _.shuffle( list )[0].src;
-
-                // listening in HomeView
-                _this.set('src', src);
-
+                _this.updateSrc();
             }, 10000);
-
         },
+
+        updateSrc : function(){
+
+            var src   = _.shuffle( this.get('img_bg') )[0].src;
+
+            if (this.get('top') === 'one'){
+
+                this.set('top', 'two');
+            } else {
+
+                this.set('top', 'one');
+            }
+
+            // listening in HomeView
+            this.set('src', src);
+        },
+
+        onResize : function(payload){
+
+            this.set('stats', payload.stats );
+
+            this.trigger('change:stats');
+        }
 
     });
 

@@ -15,6 +15,7 @@ define(function (require) {
 
     // @children
     var HomeViewHero = require('home/view/hero');
+    var Background  = require('shared/background/view');
 
     // CLASS //////////////////////////////////////////////////////////////////
     var HomeView = Marionette.LayoutView.extend({
@@ -25,7 +26,7 @@ define(function (require) {
 
         initialize : function(){
 
-            this.$el.attr('id', this.name + '_el');
+            this.$el.attr('data-el', this.name);
 
             this.model = Store;
 
@@ -33,10 +34,6 @@ define(function (require) {
         },
 
         onAttach : function(){
-
-            this.$window        = $(window);
-
-            this.addWindowEvents();
 
             Dispatcher.dispatch({action:'module:opened:home'});
         },
@@ -49,10 +46,40 @@ define(function (require) {
         // REGIONS ////////////////////////////////////////////////////////////
         regions : {
 
-            'hero' : '#page-home-hero'
+            'hero'          : '#page-home-hero',
+            'background'    : '#page-home-bg'
         },
 
         // MODEL EVENTS ///////////////////////////////////////////////////////
+
+        modelEvents: {
+            'render:children'   : 'onRenderChildren',
+            'change:stats'      : 'onResize'
+        },
+
+        onRenderChildren : function(){
+
+            if (this.getRegion('hero')) {
+                this.showChildView('hero', new HomeViewHero({model: this.model}));
+            }
+
+            if (this.getRegion('background')) {
+                this.showChildView('background', new Background());
+            }
+
+        },
+
+        onResize : function(){
+            //console.log('BackgroundView::onResize', this.model.get('stats') );
+
+            var stats = this.model.get('stats');
+
+            this.$el.css({
+                height  : stats.height,
+                width   : stats.width
+            });
+        },
+
         addModelEvents : function(){
 
             var _this = this;
@@ -62,37 +89,9 @@ define(function (require) {
             }
         },
 
-        // modelEvent not registering... the above listener is.
-        modelEvents: {
-            'render:children'   : 'onRenderChildren'
-        },
-
-        onRenderChildren : function(){
-
-            if (this.getRegion('hero')) {
-                this.showChildView('hero', new HomeViewHero({model: this.model}));
-            }
-        },
-
         // UI EVENTS //////////////////////////////////////////////////////////
 
-        addWindowEvents : function(){
-            var _this = this;
-
-            this.$window.on('resize', function(){ _this.onResize(); });
-        },
-
-        events: {},
-
-        onResize : function(){
-
-            /*var _this = this;
-
-            this.$el.css({
-                width : _this.$window.width(),
-                height: _this.$window.height()
-            });*/
-        }
+        events: {}
 
     });
 

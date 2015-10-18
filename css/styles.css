@@ -204,8 +204,6 @@ td {
 
 /* modules */
 #main {
-  background-image: url("../images/bg/desktop.v2.jpg");
-  background-position: center center;
   position: relative;
   margin: 0;
   padding: 0;
@@ -240,65 +238,100 @@ td {
   text-align: right;
   z-index: 999; }
 
-._10k_module {
+.tki_module {
   display: block;
   margin: 0;
   padding: 0;
   clear: both; }
 
-._10k_brand {
+.tki_page {
+  overflow: hidden; }
+
+.tki_brand {
   float: left;
   display: inline-block; }
-  ._10k_brand ._10k_logo {
+  .tki_brand .tki_logo {
     width: 150px;
     display: inline-block;
     position: relative;
     top: 0;
     left: 5px; }
-    ._10k_brand ._10k_logo img {
+    .tki_brand .tki_logo img {
       position: absolute;
       top: 0;
       left: 0;
       transition: all 250ms; }
-    ._10k_brand ._10k_logo #logo-wht {
+    .tki_brand .tki_logo #logo-wht {
       z-index: 3; }
-    ._10k_brand ._10k_logo #logo-red {
+    .tki_brand .tki_logo #logo-red {
       z-index: 2; }
-    ._10k_brand ._10k_logo #logo-blk {
+    .tki_brand .tki_logo #logo-blk {
       z-index: 1; }
-    ._10k_brand ._10k_logo:hover #logo-wht {
+    .tki_brand .tki_logo:hover #logo-wht {
       left: 4px;
       top: -4px; }
-    ._10k_brand ._10k_logo:hover #logo-red {
+    .tki_brand .tki_logo:hover #logo-red {
       left: -4px;
       top: 4px; }
-    ._10k_brand ._10k_logo:hover #logo-blk {
+    .tki_brand .tki_logo:hover #logo-blk {
       left: -4px;
       top: -4px; }
 
-._10k_nav {
+.tki_nav {
   display: inline-block;
   position: absolute;
   top: 10px;
   right: 15px; }
 
-#page-home-hero h1 {
-  color: white;
-  font-size: 72px;
-  text-align: center;
-  height: 80px;
-  margin: auto 0;
+#page-home {
+  position: relative;
+  height: 100%;
+  width: 100%; }
+
+#page-home-hero {
+  background-color: transparent;
+  position: relative;
+  height: 100%;
+  z-index: 10; }
+  #page-home-hero h1 {
+    color: white;
+    font-size: 72px;
+    text-align: center;
+    height: 36px;
+    margin: auto 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgba(50, 50, 50, 0.4);
+    transition: all 250ms; }
+    #page-home-hero h1:hover {
+      color: red;
+      text-shadow: 2px 2px 4px rgba(50, 50, 50, 0.6); }
+    @media screen and (max-width: 768px) {
+      #page-home-hero h1 {
+        font-size: 48px;
+        height: 24px; } }
+
+#page-home-bg {
   position: absolute;
+  height: 100%;
   width: 100%;
   top: 0;
-  bottom: 0;
-  cursor: pointer;
-  text-shadow: 1px 1px 2px rgba(50, 50, 50, 0.4);
-  transition: all 250ms; }
-  #page-home-hero h1:hover {
-    color: red;
-    text-shadow: 2px 2px 4px rgba(50, 50, 50, 0.6); }
+  left: 0;
+  z-index: 1; }
 
 /* shared */
+.tki_background {
+  height: 100%;
+  width: 100%; }
+  .tki_background .tki_background-inner {
+    overflow: hidden;
+    height: 100%;
+    width: 100%; }
+    .tki_background .tki_background-inner .tki_background-img {
+      position: absolute;
+      max-width: none; }
 
 /*# sourceMappingURL=styles.css.map */

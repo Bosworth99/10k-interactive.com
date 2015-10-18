@@ -28,14 +28,14 @@ define(function(require){
 
         onModuleOpenedHome : function(args,e){
 
-            Backbone.history.navigate('home');
+            Backbone.history.navigate('handcrafted-internet');
         },
 
         // ROUTES /////////////////////////////////////////////////////////////
 
         routes: {
-            ''          : 'onEmptyRoute',
-            'home'      : 'onRouteHome'
+            ''                          : 'onEmptyRoute',
+            'handcrafted-internet'      : 'onRouteHome'
         },
 
         onEmptyRoute : function(){

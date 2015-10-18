@@ -1,0 +1,18 @@
+
+.tki_background {
+    height:100%;
+    width:100%;
+
+    .tki_background-inner {
+        overflow:hidden;
+        height:100%;
+        width:100%;
+
+        .tki_background-img {
+            position: absolute;
+            max-width: none;
+        }
+
+    }
+
+}

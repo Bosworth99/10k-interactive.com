@@ -30,6 +30,8 @@ define(function (require) {
             Dispatcher.bus.on('module:ready:home',      function(args){ _this.onModuleReadyHome(args); });
             Dispatcher.bus.on('module:opened:home',     function(args){ _this.onModuleOpenedHome(args); });
 
+            Dispatcher.bus.on('request:window',         function(args){ _this.onWindowUpdate(args); });
+
         },
 
         // Header
@@ -44,9 +46,16 @@ define(function (require) {
         onModuleReadyHome : function(args){
 
             this.trigger('render:content:home');
+
+            this.onWindowUpdate();
         },
 
-        onModuleOpenedHome : function(args){}
+        onModuleOpenedHome : function(args){},
+
+        onWindowUpdate : function(){
+
+            this.trigger('update:window');
+        }
 
     });
 

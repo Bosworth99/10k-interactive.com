@@ -32,13 +32,20 @@ define(function(require){
         },
 
         initialize: function () {
+            console.log('RootViewView::initialize');
 
-            this.addEventHandlers();
+            this.$el.attr('data-el', this.name);
 
             this.render();
-        },
 
-        addEventHandlers : function(){ },
+
+            this.$window  = $(window);
+
+            this.addWindowEvents();
+
+            this.onResize();
+
+        },
 
         // MODEL EVENTS ///////////////////////////////////////////////////////
         modelEvents: {
@@ -60,13 +67,33 @@ define(function(require){
             if (this.getRegion('content')){
 
                 this.showChildView('content', new HomeView());
+
+                this.onResize();
             }
 
         },
 
         // DOM EVENTS ///////////////////////////////////////////////////////
 
-        events : {}
+        addWindowEvents : function(){
+            var _this = this;
+
+            this.$window.on('resize', function(){ _this.onResize(); });
+        },
+
+        events : {
+            'update:window' : 'onResize'
+        },
+
+        onResize : function(){
+
+            var params = {
+                height : window.innerHeight,
+                width  : window.innerWidth
+            };
+
+            Dispatcher.bus.trigger( 'window:resize', { stats : params } );
+        }
 
 
     });

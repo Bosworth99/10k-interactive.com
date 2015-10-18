@@ -1,6 +1,4 @@
 #main{
-    background-image: url('../images/bg/desktop.v2.jpg');
-    background-position: center center;
     position:relative;
     margin:0;
     padding:0;
@@ -40,13 +38,13 @@
     z-index:999;
 }
 
-._10k_module{
+.tki_module{
     display:block;
     margin:0;
     padding:0;
     clear:both;
 }
 
-._10k_page{
-
+.tki_page{
+    overflow:hidden;
 }
