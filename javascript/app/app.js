@@ -20,6 +20,8 @@ define(function (require) {
     var RootViewView    = require('rootview/view');
 
     var Header          = require('header/store');
+    var Footer          = require('footer/store');
+    var Fixed           = require('fixed/store');
     var Home            = require('home/store');
 
     // CLASS //////////////////////////////////////////////////////////////////
@@ -57,6 +59,8 @@ define(function (require) {
             this.modules            = {};
             this.modules.rootview   = RootView;
             this.modules.header     = Header;
+            this.modules.footer     = Footer;
+            this.modules.fixed      = Fixed;
             this.modules.home       = Home;
 
             // have to instatiate the root view manually

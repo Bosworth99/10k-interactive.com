@@ -24,14 +24,26 @@ define(function (require) {
 
             var _this = this;
 
+            Dispatcher.bus.on('request:window',         function(args){ _this.onDOMUpdate(args); });
+
             Dispatcher.bus.on('module:ready:header',    function(args){ _this.onModuleReadyHeader(args); });
             Dispatcher.bus.on('module:opened:header',   function(args){ _this.onModuleOpenedHeader(args); });
+
+            Dispatcher.bus.on('module:ready:footer',    function(args){ _this.onModuleReadyFooter(args); });
+            Dispatcher.bus.on('module:opened:footer',   function(args){ _this.onModuleOpenedFooter(args); });
+
+            Dispatcher.bus.on('module:ready:fixed',     function(args){ _this.onModuleReadyFixed(args); });
+            Dispatcher.bus.on('module:opened:fixed',    function(args){ _this.onModuleOpenedFixed(args); });
 
             Dispatcher.bus.on('module:ready:home',      function(args){ _this.onModuleReadyHome(args); });
             Dispatcher.bus.on('module:opened:home',     function(args){ _this.onModuleOpenedHome(args); });
 
-            Dispatcher.bus.on('request:window',         function(args){ _this.onWindowUpdate(args); });
+        },
 
+        // DOK
+        onDOMUpdate : function(){
+
+            this.trigger('update:dom');
         },
 
         // Header
@@ -42,20 +54,34 @@ define(function (require) {
 
         onModuleOpenedHeader : function(args){},
 
+        // Footer
+        onModuleReadyFooter : function(args){
+
+            this.trigger('render:footer');
+        },
+
+        onModuleOpenedFooter : function(args){},
+
+
+        // Fixed
+        onModuleReadyFixed : function(args){
+
+            this.trigger('render:fixed');
+        },
+
+        onModuleOpenedFixed : function(args){},
+
         // Home Page
         onModuleReadyHome : function(args){
 
             this.trigger('render:content:home');
 
-            this.onWindowUpdate();
+            this.onDOMUpdate();
         },
 
-        onModuleOpenedHome : function(args){},
+        onModuleOpenedHome : function(args){}
 
-        onWindowUpdate : function(){
 
-            this.trigger('update:window');
-        }
 
     });
 

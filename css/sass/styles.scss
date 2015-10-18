@@ -16,10 +16,14 @@
 /* base styles  */
 @import "base";
 
-/* modules */
+/* site */
 @import "../../Javascript/app/rootview/styles";
 @import "../../Javascript/app/header/styles";
-@import "../../Javascript/app/home/styles";
+@import "../../Javascript/app/footer/styles";
+@import "../../Javascript/app/fixed/styles";
 
 /* shared */
 @import "../../Javascript/app/shared/background/styles";
+
+/* content */
+@import "../../Javascript/app/home/styles";

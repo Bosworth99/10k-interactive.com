@@ -12,12 +12,13 @@ define(function (require) {
         name : 'BackgroundStore',
 
         initialize: function () {
-            console.log('%s::initialize ', this.name );
+            //console.log('%s::initialize ', this.name );
 
             this.set('init', true);
 
             this.set('src', '/images/bg/desktop.v3.jpg' );
             this.set('top', 'one');
+            this.idx = 0;
 
             this.addEventHandlers();
 
@@ -33,7 +34,8 @@ define(function (require) {
             img_bg : [
                 { src : '/images/bg/desktop.v1.jpg' },
                 { src : '/images/bg/desktop.v2.jpg' },
-                { src : '/images/bg/desktop.v3.jpg' }
+                { src : '/images/bg/desktop.v3.jpg' },
+                { src : '/images/bg/desktop.v2.jpg' }
             ]
         },
 
@@ -42,7 +44,7 @@ define(function (require) {
 
             var _this = this;
 
-            Dispatcher.bus.on('window:resize', function(args){ _this.onResize(args); });
+            Dispatcher.bus.on('dom:resize', function(args){ _this.onDOMResize(args); });
         },
 
         setBGTimer : function(){
@@ -52,15 +54,16 @@ define(function (require) {
             }
 
             var _this = this;
-
             this.srcTimer = window.setInterval( function(){
+
                 _this.updateSrc();
+
             }, 10000);
         },
 
         updateSrc : function(){
 
-            var src   = _.shuffle( this.get('img_bg') )[0].src;
+            var src   = this.get('img_bg')[this.idx].src;
 
             if (this.get('top') === 'one'){
 
@@ -72,13 +75,19 @@ define(function (require) {
 
             // listening in HomeView
             this.set('src', src);
+
+            this.idx++;
+            if (this.idx > this.get('img_bg').length - 1){
+                this.idx = 0;
+            }
+
         },
 
-        onResize : function(payload){
+        onDOMResize : function(payload){
 
-            this.set('stats', payload.stats );
+            this.set('window', payload.stats );
 
-            this.trigger('change:stats');
+            this.trigger('dom:resize');
         }
 
     });

@@ -20,12 +20,14 @@
     width:100%;
     top:0;
     left:0;
+    z-index:1;
 }
 
 #site-footer{
     position:fixed;
     bottom:0;
     left:0;
+    width:100%;
     z-index:998;
 }
 

@@ -42,12 +42,16 @@ define(function(require){
 
             Dispatcher.dispatch({ action : 'module:open:home' });
             Dispatcher.dispatch({ action : 'module:open:header' });
+            Dispatcher.dispatch({ action : 'module:open:footer' });
+            Dispatcher.dispatch({ action : 'module:open:fixed' });
         },
 
         onRouteHome : function(){
 
             Dispatcher.dispatch({ action : 'module:open:home' });
             Dispatcher.dispatch({ action : 'module:open:header' });
+            Dispatcher.dispatch({ action : 'module:open:footer' });
+            Dispatcher.dispatch({ action : 'module:open:fixed' });
         }
 
     });

@@ -40,7 +40,7 @@ define(function (require) {
             Dispatcher.bus.on('module:opened:home', function(args){ _this.onModuleOpenedHome(args); });
             Dispatcher.bus.on('module:closed:home', function(args){ _this.onModuleClosedHome(args); });
 
-            Dispatcher.bus.on('window:resize',      function(args){ _this.onResize(args); });
+            Dispatcher.bus.on('dom:resize',         function(args){ _this.onDOMResize(args); });
 
             Dispatcher.bus.on('home:click:title',   function(){     _this.onHomeClickTitle(); });
         },
@@ -107,11 +107,11 @@ define(function (require) {
             return _.shuffle( titles )[0].toUpperCase();
         },
 
-        onResize : function(payload){
+        onDOMResize : function(payload){
 
-            this.set('stats', payload.stats );
+            this.set('window', payload.stats );
 
-            this.trigger('change:stats');
+            this.trigger('dom:resize');
         }
 
     });

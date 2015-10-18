@@ -12,6 +12,8 @@ define(function(require){
 
     // @modules
     var HeaderView      = require('header/view');
+    var FooterView      = require('footer/view');
+    var FixedView       = require('fixed/view');
     var HomeView        = require('home/view');
 
     // CLASS //////////////////////////////////////////////////////////////////
@@ -32,34 +34,51 @@ define(function(require){
         },
 
         initialize: function () {
-            console.log('RootViewView::initialize');
+            //console.log('%s::initialize', this.name);
 
             this.$el.attr('data-el', this.name);
 
             this.render();
 
-
             this.$window  = $(window);
 
             this.addWindowEvents();
 
-            this.onResize();
+            this.onDOMUpdate();
 
         },
 
         // MODEL EVENTS ///////////////////////////////////////////////////////
         modelEvents: {
             'render:header'         : 'onRenderHeader',
+            'render:footer'         : 'onRenderFooter',
+            'render:fixed'          : 'onRenderFixed',
             'render:content:home'   : 'onRenderContentHome'
         },
 
         onRenderHeader : function(){
 
-            if (this.getRegion('header')){
+            if (this.getRegion('header') && !this.getRegion('header').hasView()){
 
                 this.showChildView('header', new HeaderView());
             }
 
+        },
+
+        onRenderFooter : function(){
+
+            if (this.getRegion('footer') && !this.getRegion('footer').hasView()){
+
+                this.showChildView('footer', new FooterView());
+            }
+        },
+
+        onRenderFixed : function(){
+
+            if (this.getRegion('fixed') && !this.getRegion('fixed').hasView()){
+
+                this.showChildView('fixed', new FixedView());
+            }
         },
 
         onRenderContentHome : function(){
@@ -68,9 +87,8 @@ define(function(require){
 
                 this.showChildView('content', new HomeView());
 
-                this.onResize();
+                this.onDOMUpdate();
             }
-
         },
 
         // DOM EVENTS ///////////////////////////////////////////////////////
@@ -78,23 +96,22 @@ define(function(require){
         addWindowEvents : function(){
             var _this = this;
 
-            this.$window.on('resize', function(){ _this.onResize(); });
+            this.$window.on('resize', function(){ _this.onDOMUpdate(); });
         },
 
         events : {
-            'update:window' : 'onResize'
+            'update:dom' : 'onDOMUpdate'
         },
 
-        onResize : function(){
+        onDOMUpdate : function(){
 
             var params = {
                 height : window.innerHeight,
                 width  : window.innerWidth
             };
 
-            Dispatcher.bus.trigger( 'window:resize', { stats : params } );
+            Dispatcher.bus.trigger( 'dom:resize', { stats : params } );
         }
-
 
     });
 

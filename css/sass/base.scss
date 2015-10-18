@@ -6,6 +6,7 @@ html{
 }
 
 body {
+    font-family : $font-body, Arial, sans-serif;
     height:100%;
     width:100%;
     background-color:rgb(0,0,0);
@@ -20,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, h2, h3, h4, h5, h6, p, strong, span, div, li, td{ color:$primary-font-color;}
 
-p { font-size:14px !important; line-height:1.3em; padding:0; margin-bottom:.65em; }
+p { font-size:14px; line-height:1.3em; padding:0; margin-bottom:.65em; }
 p img { margin: 0; }
 
 em { font-style: italic; }

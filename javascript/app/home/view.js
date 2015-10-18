@@ -54,7 +54,7 @@ define(function (require) {
 
         modelEvents: {
             'render:children'   : 'onRenderChildren',
-            'change:stats'      : 'onResize'
+            'dom:resize'       : 'onDOMResize'
         },
 
         onRenderChildren : function(){
@@ -69,10 +69,10 @@ define(function (require) {
 
         },
 
-        onResize : function(){
-            //console.log('BackgroundView::onResize', this.model.get('stats') );
+        onDOMResize : function(){
+            //console.log('BackgroundView::onDOMResize', this.model.get('stats') );
 
-            var stats = this.model.get('stats');
+            var stats = this.model.get('window');
 
             this.$el.css({
                 height  : stats.height,
