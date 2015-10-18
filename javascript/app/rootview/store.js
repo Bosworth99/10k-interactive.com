@@ -74,6 +74,7 @@ define(function (require) {
         // Home Page
         onModuleReadyHome : function(args){
 
+
             this.trigger('render:content:home');
 
             this.onDOMUpdate();

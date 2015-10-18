@@ -6,7 +6,8 @@ define(function (require) {
     // @includes
     var Dispatcher  = require('dispatcher');
     var Marionette  = require('backbone.marionette');
-    var TweenMax    = require('tweenmax');
+    var $max        = require('tweenmax');
+    //https://ihatetomatoes.net/wp-content/uploads/2015/08/GreenSock-Cheatsheet-2.pdf
 
     // @components
     var Template    = require('requireText!shared/background/template.html');
@@ -49,9 +50,11 @@ define(function (require) {
         },
 
         onChangeSrc : function(){
-            //console.log('BackgroundView::onChangeSrc', this.model.get('src') );
+            ///console.log('BackgroundView::onChangeSrc', this.model.get('src') );
 
             var _this   = this;
+            var img1    = this.$img1;
+            var img2    = this.$img2;
             var src     = this.model.get('src');
             var bgImage = String( 'url("' + src + '")');
 
@@ -60,57 +63,80 @@ define(function (require) {
             img.onload  = function(){
 
                 if (_this.model.get('top') === 'two'){
+                    //img2.attr('src', src ).css({'z-index': 2, 'display' : 'none' }).fadeIn(1250);
 
-                    _this.$img2.attr('src', src ).css({'z-index': 2, 'display' : 'none' }).fadeIn(1250);
-                    _this.$img1.css({'z-index' : 1});
+                    img2[0].src = src;
+
+                    $max.set(   [img2],      { opacity : 0.0 , 'z-index' : 2 });
+                    $max.to(    [img2], 1,   { opacity : 1.0 });
+
+                    $max.set(   [img1],      { 'z-index' : 1 });
 
                 } else {
+                    //img1.attr('src', src ).css({'z-index': 2, 'display' : 'none' }).fadeIn(1250);
 
-                    _this.$img1.attr('src', src ).css({'z-index': 2, 'display' : 'none' }).fadeIn(1250);
-                    _this.$img2.css({'z-index' : 1 });
+                    img1[0].src = src;
+
+                    $max.set(   [img1],      { opacity : 0.0 , 'z-index' : 2 });
+                    $max.to(    [img1], 1,   { opacity : 1.0 });
+
+                    $max.set(   [img2],      { 'z-index' : 1 });
                 }
 
-                _this.onDOMResize();
+               Dispatcher.bus.trigger('request:window');
+
             };
             img.src     = src;
 
         },
 
         onDOMResize : function(){
-            //console.log('BackgroundView::onResize', this.model.get('stats') );
+            //console.log('BackgroundView::onResize', this.model.get('window'), this.$img1[0].naturalHeight );
 
-            var win = this.model.get('window');
+            var win     = this.model.get('window');
+            var img1    = this.$img1;
+            var img2    = this.$img2;
 
+            // set the container dimensions. coulde probably just css this
             this.$el[0].style.height = win.height;
             this.$el[0].style.width  = win.width;
 
             // set the native resolution
-            var nWidth      = this.$img1[0].naturalWidth;    // try and get teh natural dimensions
-            var nHeight     = this.$img1[0].naturalHeight;  // try and get teh natural dimensions
+            var nHeight = ( img1[0].naturalHeight > 0 ) ? img1[0].naturalHeight : 1520;  // try and get teh natural dimensions
+            var nWidth  = ( img1[0].naturalWidth > 0 )  ? img1[0].naturalWidth  : 2688;    // try and get teh natural dimensions
+            var ratio   = nWidth / nHeight;       // get the natural ratio, to size the image up and down
 
-            var ratio       = nWidth / nHeight;
+            // set initial guess at params, it will likely be right
+            // size img to height, and center horizontally
+            var props   = {};
 
-            var height, width, top, left;
+            // if the browser goes wider than the width,
+            // then size to width and center vertically
+            if ( ( win.height * ratio ) < win.width ){
 
-            height = win.height;
-            width  = win.height * ratio;
-            left   = ((width - win.width ) / 2 ) * -1;
-            top    = 0;
+                // redefine the css obj
+                props   = {
+                    height  : win.width / ratio,
+                    width   : win.width,
+                    left    : 0,
+                    top     : (( ( win.width / ratio ) - win.height) / 2) * -1
+                };
 
-            // ensure the img fills teh browser
-            if (width < win.width){
+            } else {
 
-                height = win.width / ratio;
-                width  = win.width;
-                left   = 0;
-                top    = ((height - win.height) / 2) * -1;
+                props   = {
+                    height  : win.height,
+                    width   : win.height * ratio,
+                    left    : (( (win.height * ratio ) - win.width ) / 2 ) * -1,
+                    top     : 0
+                };
+
             }
 
             //now resize the image relative to the ratio, and determine its left / top props
-            this.$img1.attr('width', width).attr('height', height).css({ left : left + 'px', top : top + 'px'});
-            this.$img2.attr('width', width).attr('height', height).css({ left : left + 'px', top : top + 'px'});
+            $max.set( [img1, img2], props );
 
-            //console.log('%s::onDOMResize height:%s width:%s, left:%s, top:%s',this.name, height, width, left, top);
+            //console.log('%s::onDOMResize props:%o win:%o',this.name, props, win, nWidth, nHeight);
         },
 
         addModelEvents : function(){

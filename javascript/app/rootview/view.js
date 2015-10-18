@@ -53,7 +53,9 @@ define(function(require){
             'render:header'         : 'onRenderHeader',
             'render:footer'         : 'onRenderFooter',
             'render:fixed'          : 'onRenderFixed',
-            'render:content:home'   : 'onRenderContentHome'
+            'render:content:home'   : 'onRenderContentHome',
+
+            'update:dom'            : 'onDOMUpdate'
         },
 
         onRenderHeader : function(){
@@ -86,8 +88,6 @@ define(function(require){
             if (this.getRegion('content')){
 
                 this.showChildView('content', new HomeView());
-
-                this.onDOMUpdate();
             }
         },
 
@@ -99,10 +99,6 @@ define(function(require){
             this.$window.on('resize', function(){ _this.onDOMUpdate(); });
         },
 
-        events : {
-            'update:dom' : 'onDOMUpdate'
-        },
-
         onDOMUpdate : function(){
 
             var params = {
@@ -111,7 +107,9 @@ define(function(require){
             };
 
             Dispatcher.bus.trigger( 'dom:resize', { stats : params } );
-        }
+        },
+
+         events : {}
 
     });
 
