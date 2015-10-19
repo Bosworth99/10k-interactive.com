@@ -104,7 +104,7 @@ define(function (require) {
 
             $max.to( [filter], 9, { backgroundColor : col, opacity : opc });
 
-            console.log('BackgroundView::onChangeFilter', this.model.get('filter'), opc );
+            //console.log('BackgroundView::onChangeFilter', this.model.get('filter'), opc );
         },
 
         onDOMResize : function(){
@@ -143,7 +143,7 @@ define(function (require) {
                 props   = {
                     height  : win.height,
                     width   : win.height * ratio,
-                    left    : (( (win.height * ratio ) - win.width ) / 2 ) * -1,
+                    left    : (( ( win.height * ratio ) - win.width ) / 2 ) * -1,
                     top     : 0
                 };
 
