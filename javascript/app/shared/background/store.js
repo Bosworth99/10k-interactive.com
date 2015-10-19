@@ -16,13 +16,17 @@ define(function (require) {
 
             this.set('init', true);
 
+            this.set('filter', '#F10808' );
+            this.fltIdx = 0;
+
             this.set('src', '/images/bg/desktop.v3.jpg' );
             this.set('top', 'one');
-            this.idx = 0;
+            this.srcIdx = 0;
 
             this.addEventHandlers();
 
             this.setBGTimer();
+            this.setFilterTimer();
         },
 
         activate : function(){},
@@ -36,6 +40,14 @@ define(function (require) {
                 { src : '/images/bg/desktop.v2.jpg' },
                 { src : '/images/bg/desktop.v3.jpg' },
                 { src : '/images/bg/desktop.v2.jpg' }
+            ],
+
+            filter_color : [
+                { color : '#F10808' },
+                { color : '#08DEF1' },
+                { color : '#37E950' },
+                { color : '#3D3AD4' },
+                { color : '#EE8E11' }
             ]
         },
 
@@ -45,6 +57,35 @@ define(function (require) {
             var _this = this;
 
             Dispatcher.bus.on('dom:resize', function(args){ _this.onDOMResize(args); });
+        },
+
+
+        setFilterTimer : function(){
+
+            if (this.filterTimer){
+                window.clearInterval(this.filterTimer);
+            }
+
+            var _this = this;
+            this.filterTimer = window.setInterval( function(){
+
+                _this.updateFilter();
+
+            }, 10000);
+        },
+
+        updateFilter : function(){
+
+            var color   = this.get('filter_color')[this.fltIdx].color;
+
+            // listening in HomeView
+            this.set('filter', color);
+
+            this.fltIdx++;
+            if (this.fltIdx > this.get('filter_color').length - 1){
+                this.fltIdx = 0;
+            }
+
         },
 
         setBGTimer : function(){
@@ -63,7 +104,7 @@ define(function (require) {
 
         updateSrc : function(){
 
-            var src   = this.get('img_bg')[this.idx].src;
+            var src   = this.get('img_bg')[this.srcIdx].src;
 
             if (this.get('top') === 'one'){
 
@@ -76,9 +117,9 @@ define(function (require) {
             // listening in HomeView
             this.set('src', src);
 
-            this.idx++;
-            if (this.idx > this.get('img_bg').length - 1){
-                this.idx = 0;
+            this.srcIdx++;
+            if (this.srcIdx > this.get('img_bg').length - 1){
+                this.srcIdx = 0;
             }
 
         },

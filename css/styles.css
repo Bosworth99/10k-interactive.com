@@ -304,6 +304,14 @@ td {
     .tki_background .tki_background-inner .tki_background-img {
       position: absolute;
       max-width: none; }
+    .tki_background .tki_background-inner .tki_background-filter {
+      position: absolute;
+      background-color: transparent;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 10; }
 
 /* content */
 #page-home {

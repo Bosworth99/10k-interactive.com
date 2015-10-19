@@ -37,16 +37,19 @@ define(function (require) {
 
             this.$img1 = this.$background.find('[data-img="one"]');
             this.$img2 = this.$background.find('[data-img="two"]');
+            this.$filter = this.$background.find('[data-img="filter"]');
 
             this.onChangeSrc();
+            this.onChangeFilter();
         },
 
         onDestroy : function(){ },
 
         // MODEL EVENTS ///////////////////////////////////////////////////////
         modelEvents: {
-            'change:src' : 'onChangeSrc',
-            'dom:resize' : 'onDOMResize'
+            'change:src'    : 'onChangeSrc',
+            'change:filter' : 'onChangeFilter',
+            'dom:resize'    : 'onDOMResize'
         },
 
         onChangeSrc : function(){
@@ -90,6 +93,20 @@ define(function (require) {
 
         },
 
+        onChangeFilter : function(){
+
+            var col     = this.model.get('filter');
+            var filter  = this.$filter;
+
+            var opc     = Math.random() - 0.4;
+            opc = ( opc < 0.1 )? 0.1 : opc;
+            opc = ( opc > 0.4 )? 0.4 : opc;
+
+            $max.to( [filter], 9, { backgroundColor : col, opacity : opc });
+
+            console.log('BackgroundView::onChangeFilter', this.model.get('filter'), opc );
+        },
+
         onDOMResize : function(){
             //console.log('BackgroundView::onResize', this.model.get('window'), this.$img1[0].naturalHeight );
 
@@ -106,15 +123,13 @@ define(function (require) {
             var nWidth  = ( img1[0].naturalWidth > 0 )  ? img1[0].naturalWidth  : 2688;    // try and get teh natural dimensions
             var ratio   = nWidth / nHeight;       // get the natural ratio, to size the image up and down
 
-            // set initial guess at params, it will likely be right
-            // size img to height, and center horizontally
+            // store a props object to hand to max
             var props   = {};
 
             // if the browser goes wider than the width,
-            // then size to width and center vertically
             if ( ( win.height * ratio ) < win.width ){
 
-                // redefine the css obj
+                // then size to width and center vertically
                 props   = {
                     height  : win.width / ratio,
                     width   : win.width,
@@ -124,6 +139,7 @@ define(function (require) {
 
             } else {
 
+                // size img to height, and center horizontally
                 props   = {
                     height  : win.height,
                     width   : win.height * ratio,
