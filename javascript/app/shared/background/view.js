@@ -1,4 +1,4 @@
-// # HomeView
+// # BackgroundView
 
 define(function (require) {
     'use strict';
