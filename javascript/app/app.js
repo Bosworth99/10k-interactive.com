@@ -24,19 +24,22 @@ define(function (require) {
     var Fixed           = require('fixed/store');
     var Home            = require('home/store');
 
-    // CLASS //////////////////////////////////////////////////////////////////
+    // CLASS /////////////////////////////////////////////////////////////////S/
     var App =  Marionette.Application.extend({
 
         name : 'App',
 
         initialize : function(){
-            console.log('App::initialize %o', Config);
 
             // configure all the things
             this.configureApp();
 
             // make the moduels
             this.assembleModules();
+
+            //var Abstract = require('Abstract');
+            
+            console.log('App::initialize Config:%o', Config);
         },
 
         configureApp : function(){

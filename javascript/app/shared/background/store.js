@@ -3,16 +3,17 @@
 define(function (require) {
     'use strict';
 
+    var Abstract        = require('abstract');
     var Backbone        = require('backbone');
     var Dispatcher      = require('dispatcher');
 
     // CLASS //////////////////////////////////////////////////////////////////
-    var BackgroundStore =  Backbone.Model.extend({
+    var BackgroundStore =  Abstract.Model.extend({
 
         name : 'BackgroundStore',
 
         initialize: function () {
-            //console.log('%s::initialize ', this.name );
+            console.log('%s::initialize ', this.name, this );
 
             this.set('init', true);
 
@@ -57,6 +58,7 @@ define(function (require) {
             var _this = this;
 
             Dispatcher.bus.on('dom:resize', function(args){ _this.onDOMResize(args); });
+            //this.subscribe('dom:resize', function(args){ _this.onDOMResize(args); });
         },
 
 
