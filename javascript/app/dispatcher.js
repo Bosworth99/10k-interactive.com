@@ -2,20 +2,22 @@ define(function (require) {
     'use strict';
 
     // @includes
+    var Marionette = require('backbone.marionette');
     var Backbone   = require('backbone');
     var Radio      = require('backbone.radio');
 
     var Config     = require('config');
 
     // CLASS //////////////////////////////////////////////////////////////////
-    var Dispatcher =  Backbone.Model.extend({
+    var Dispatcher = Marionette.Object.extend({
 
         name : 'Dispatcher',
 
+        dispatcher : Radio.channel('dispatcher'),
+
         initialize : function(){
 
-            this.bus = Radio.channel('dispatcher');
-
+            this.bus = this.dispatcher;
         },
 
         dispatch : function(payload){
@@ -43,9 +45,14 @@ define(function (require) {
                 }
 
                 // trigger the action / param on the Radio.channel bus
-                this.bus.trigger( action, params );
+                Radio.channel('dispatcher').trigger( action, params );
             }
 
+        },
+
+        subscribe : function(options){
+
+            Radio.channel('dispatcher').on.call(this, options);
         }
     });
 

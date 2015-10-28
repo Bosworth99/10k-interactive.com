@@ -3,11 +3,13 @@
 define(function (require) {
     'use strict';
 
+    var TKI             = require('abstract');
+
     var Backbone        = require('backbone');
     var Dispatcher      = require('dispatcher');
 
     // CLASS //////////////////////////////////////////////////////////////////
-    var HeaderStore =  Backbone.Model.extend({
+    var HeaderStore =  TKI.Model.extend({
 
         name : 'HeaderStore',
 
@@ -17,11 +19,17 @@ define(function (require) {
             this.set('init', true);
 
             this.addEventHandlers();
+
         },
 
         activate : function(){
 
             Dispatcher.dispatch({action:'module:ready:header'});
+
+            TKI.publish( { action:'tki:publish:1' } );
+
+            TKI.publish( { action:'tki:publish:2' } );
+
         },
 
         dectivate : function(){},
@@ -31,7 +39,7 @@ define(function (require) {
 
             var _this = this;
 
-            Dispatcher.bus.on('module:open:header',   function(args){ _this.onModuleOpenHeader(args); });
+            Dispatcher.subscribe('module:open:header',   function(args){ _this.onModuleOpenHeader(args); });
             Dispatcher.bus.on('module:opened:header', function(args){ _this.onModuleOpenedHeader(args); });
             Dispatcher.bus.on('module:closed:header', function(args){ _this.onModuleClosedHeader(args); });
         },

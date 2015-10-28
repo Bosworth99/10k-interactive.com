@@ -288,10 +288,18 @@ td {
 
 .tki_footer {
   width: 100%; }
+  .tki_footer .tki_footer-content {
+    display: inline-block; }
+  .tki_footer .tki_footer-contact a {
+    display: inline-block;
+    padding: 20px;
+    font-size: 48px;
+    line-height: 1em; }
   .tki_footer .tki_colophon {
-    float: right;
-    color: #fff;
-    padding: 10px; }
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #fff; }
 
 /* shared */
 .tki_background {

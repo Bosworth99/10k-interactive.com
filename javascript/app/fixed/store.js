@@ -3,6 +3,8 @@
 define(function (require) {
     'use strict';
 
+    var Abstract        = require('Abstract');
+
     var Backbone        = require('backbone');
     var Dispatcher      = require('dispatcher');
 

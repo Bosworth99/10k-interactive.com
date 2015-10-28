@@ -3,17 +3,16 @@
 define(function (require) {
     'use strict';
 
-    var Abstract        = require('abstract');
     var Backbone        = require('backbone');
     var Dispatcher      = require('dispatcher');
 
     // CLASS //////////////////////////////////////////////////////////////////
-    var BackgroundStore =  Abstract.Model.extend({
+    var BackgroundStore =  Backbone.Model.extend({
 
         name : 'BackgroundStore',
 
         initialize: function () {
-            console.log('%s::initialize ', this.name, this );
+            //console.log('%s::initialize ', this.name, this );
 
             this.set('init', true);
 

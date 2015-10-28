@@ -37,9 +37,6 @@ define(function (require) {
             // make the moduels
             this.assembleModules();
 
-            //var Abstract = require('Abstract');
-            
-            console.log('App::initialize Config:%o', Config);
         },
 
         configureApp : function(){
@@ -71,7 +68,7 @@ define(function (require) {
         },
 
         start: function () {
-            console.log('App::start %o', this);
+            //console.log('App::start %o', this);
 
             Backbone.history.start();
         }
