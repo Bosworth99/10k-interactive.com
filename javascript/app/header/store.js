@@ -3,13 +3,13 @@
 define(function (require) {
     'use strict';
 
-    var TKI             = require('abstract');
+    var _10k            = require('abstract');
 
-    var Backbone        = require('backbone');
-    var Dispatcher      = require('dispatcher');
+    //var Backbone        = require('backbone');
+    //var Dispatcher      = require('dispatcher');
 
     // CLASS //////////////////////////////////////////////////////////////////
-    var HeaderStore =  TKI.Model.extend({
+    var HeaderStore =  _10k.Model.extend({
 
         name : 'HeaderStore',
 
@@ -24,12 +24,10 @@ define(function (require) {
 
         activate : function(){
 
-            Dispatcher.dispatch({action:'module:ready:header'});
+            //Dispatcher.dispatch({action:'module:ready:header'});
 
-            TKI.publish( { action:'tki:publish:1' } );
-
-            TKI.publish( { action:'tki:publish:2' } );
-
+            _10k.publish( { action:'module:ready:header'} );
+            //_10k.publish( { action:'tki:publish:2' } );
         },
 
         dectivate : function(){},
@@ -39,9 +37,9 @@ define(function (require) {
 
             var _this = this;
 
-            Dispatcher.subscribe('module:open:header',   function(args){ _this.onModuleOpenHeader(args); });
-            Dispatcher.bus.on('module:opened:header', function(args){ _this.onModuleOpenedHeader(args); });
-            Dispatcher.bus.on('module:closed:header', function(args){ _this.onModuleClosedHeader(args); });
+            _10k.subscribe('module:open:header',   function(args){ _this.onModuleOpenHeader(args); });
+            _10k.subscribe('module:opened:header', function(args){ _this.onModuleOpenedHeader(args); });
+            _10k.subscribe('module:closed:header', function(args){ _this.onModuleClosedHeader(args); });
         },
 
         onModuleOpenHeader : function(args){

@@ -17,6 +17,8 @@ define(function (require) {
 
         initialize : function(){
 
+            //console.log('Dispatcher::initialize', this.dispatcher, Radio);
+
             this.bus = this.dispatcher;
         },
 
@@ -41,18 +43,29 @@ define(function (require) {
                 }
 
                 if ( Config.debug && typeof window.console !== 'undefined'){
-                    window.console.log('ACTION %s PAYLOAD %o', action, params);
+                    window.console.log('ACTION %s PAYLOAD %o', action, params );
                 }
 
-                // trigger the action / param on the Radio.channel bus
-                Radio.channel('dispatcher').trigger( action, params );
+                if ( typeof payload.params !== 'undefined') {
+
+                    // trigger the action / param on the Radio.channel bus
+                    Radio.channel('dispatcher').trigger( action, params );
+
+                } else {
+
+                    // trigger the action / param on the Radio.channel bus
+                    Radio.channel('dispatcher').trigger( action );
+
+                }
+
             }
 
         },
 
-        subscribe : function(options){
+        subscribe : function(action, callback){
+            //console.log('dispatcher::subscribe', action, callback);
 
-            Radio.channel('dispatcher').on.call(this, options);
+            Radio.channel('dispatcher').on(action, callback);
         }
     });
 

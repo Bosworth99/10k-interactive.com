@@ -18,8 +18,17 @@ define(function (require) {
     Abstract.prototype.Utility          = Utility;
 
     Abstract.prototype.Dispatcher       = Dispatcher;
-    //Abstract.prototype.publish          = Dispatcher.dispatch;
-    //Abstract.prototype.subscribe        = Dispatcher.bus.on;
+    Abstract.prototype.publish          = function(payload ){
+        //console.log('Abstract.publish %o', payload );
+
+        Dispatcher.dispatch.call(this, payload );
+    };
+
+    Abstract.prototype.subscribe        = function(action, callback){
+        //console.log('Abstract.subscribe %o', payload );
+
+        Dispatcher.subscribe.call(this, action, callback);
+    };
     //Abstract.prototype.unsubscribe      = Dispatcher.bus.off;
 
     //Abstract.prototype.listenTo         = Dispatcher.bus.listenTo;
@@ -36,13 +45,15 @@ define(function (require) {
 
     var instance              = new Abstract();
 
-    instance.publish          = function(options){
+    /*instance.publish          = function(options){
+        console.log('instance.publish %o', options);
+
         Dispatcher.dispatch.call(this, options);
     };
 
-    instance.subscribe        = function(options){
-        Dispatcher.bus.on.call(this, options);
-    };
+    instance.subscribe        = function(action, callback){
+        Dispatcher.subscribe.call(this, action, callback);
+    };*/
 
     instance.unsubscribe      = function(options){
         Dispatcher.bus.off.call(this, options);
