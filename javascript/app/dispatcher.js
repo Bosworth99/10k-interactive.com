@@ -11,15 +11,13 @@ define(function (require) {
     // CLASS //////////////////////////////////////////////////////////////////
     var Dispatcher = Marionette.Object.extend({
 
-        name : 'Dispatcher',
+        name    : 'Dispatcher',
 
-        dispatcher : Radio.channel('dispatcher'),
+        bus     : Radio.channel('dispatcher'),
 
         initialize : function(){
 
             //console.log('Dispatcher::initialize', this.dispatcher, Radio);
-
-            this.bus = this.dispatcher;
         },
 
         dispatch : function(payload){

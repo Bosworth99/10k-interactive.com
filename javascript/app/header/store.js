@@ -9,7 +9,7 @@ define(function (require) {
     //var Dispatcher      = require('dispatcher');
 
     // CLASS //////////////////////////////////////////////////////////////////
-    var HeaderStore =  _10k.Model.extend({
+    var Klass =  _10k.Model.extend({
 
         name : 'HeaderStore',
 
@@ -19,7 +19,6 @@ define(function (require) {
             this.set('init', true);
 
             this.addEventHandlers();
-
         },
 
         activate : function(){
@@ -27,7 +26,6 @@ define(function (require) {
             //Dispatcher.dispatch({action:'module:ready:header'});
 
             _10k.publish( { action:'module:ready:header'} );
-            //_10k.publish( { action:'tki:publish:2' } );
         },
 
         dectivate : function(){},
@@ -37,22 +35,22 @@ define(function (require) {
 
             var _this = this;
 
-            _10k.subscribe('module:open:header',   function(args){ _this.onModuleOpenHeader(args); });
-            _10k.subscribe('module:opened:header', function(args){ _this.onModuleOpenedHeader(args); });
-            _10k.subscribe('module:closed:header', function(args){ _this.onModuleClosedHeader(args); });
+            _10k.subscribe('module:open:header',   function(args, e){ _this.onModuleOpenHeader(args, e); });
+            _10k.subscribe('module:opened:header', function(args, e){ _this.onModuleOpenedHeader(args, e); });
+            _10k.subscribe('module:closed:header', function(args, e){ _this.onModuleClosedHeader(args, e); });
         },
 
-        onModuleOpenHeader : function(args){
+        onModuleOpenHeader : function(args, e){
 
             this.activate();
         },
 
-        onModuleOpenedHeader : function(args){
+        onModuleOpenedHeader : function(args, e){
 
             this.trigger('render:view');
         },
 
-        onModuleClosedHeader : function(args){
+        onModuleClosedHeader : function(args, e){
 
             this.dectivate();
         },
@@ -60,6 +58,6 @@ define(function (require) {
 
     });
 
-    return new HeaderStore();
+    return new Klass();
 
 });

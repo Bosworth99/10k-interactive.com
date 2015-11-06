@@ -29,7 +29,12 @@ define(function (require) {
 
         Dispatcher.subscribe.call(this, action, callback);
     };
-    //Abstract.prototype.unsubscribe      = Dispatcher.bus.off;
+
+    Abstract.prototype.unsubscribe      = function(options){
+        //console.log('Abstract.unsubscribe %o', options );
+
+        Dispatcher.bus.off.call(this, options);
+    };
 
     //Abstract.prototype.listenTo         = Dispatcher.bus.listenTo;
     //Abstract.prototype.stopListening    = Dispatcher.bus.stopListening;
@@ -41,9 +46,15 @@ define(function (require) {
     Abstract.prototype.App              = Marionette.Application;
     Abstract.prototype.ItemView         = Marionette.ItemView;
 
-    //Abstract.prototype.Extend           = _.extend;
+    Abstract.prototype.extend           = function(options){
+        _.extend.apply(this, [options]);
+    };
 
-    var instance              = new Abstract();
+    console.log('Abstract :%o', new Abstract() );
+
+    return new Abstract();
+
+    //var instance              = new Abstract();
 
     /*instance.publish          = function(options){
         console.log('instance.publish %o', options);
@@ -53,10 +64,6 @@ define(function (require) {
 
     instance.subscribe        = function(action, callback){
         Dispatcher.subscribe.call(this, action, callback);
-    };*/
-
-    instance.unsubscribe      = function(options){
-        Dispatcher.bus.off.call(this, options);
     };
 
     instance.listenTo         = Dispatcher.bus.listenTo;
@@ -66,6 +73,6 @@ define(function (require) {
 
     console.log('Abstract instance:%o', instance );
 
-    return instance;
+    return instance;*/
 
 });

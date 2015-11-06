@@ -3,7 +3,7 @@
     display:inline-block;
 
     .tki_logo{
-        width:150px;
+        width:180px;
         display:inline-block;
         position:relative;
         top:0;
@@ -13,17 +13,18 @@
             position:absolute;
             top:0;
             left:0;
-            transition:all 250ms;
+            transition:all 225ms ease-out;
+            /* transition-timing-function: ease|linear|ease-in|ease-out|ease-in-out|cubic-bezier()|initial|inherit; */
         }
 
-        #logo-wht{ z-index:3; }
-        #logo-red{ z-index:2; }
-        #logo-blk{ z-index:1; }
+        #logo-wht{ z-index:3; left:1px; top:1px; }
+        #logo-red{ z-index:2; left:0px; top:0; }
+        #logo-blk{ z-index:1; left:-1px; top:-1px; }
 
         &:hover{
-            #logo-wht{ left:4px; top:-4px; }
-            #logo-red{ left:-4px; top:4px; }
-            #logo-blk{ left:-4px; top:-4px; }
+            #logo-wht{ left:4px; top:4px; transform: rotate(.5deg); }
+            #logo-red{ left:-1px; top:-1; transform: rotate(1deg); }
+            #logo-blk{ left:-6px; top:-6px; transform: rotate(2deg); }
         }
 
     }

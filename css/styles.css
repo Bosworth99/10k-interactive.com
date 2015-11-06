@@ -254,7 +254,7 @@ td {
   float: left;
   display: inline-block; }
   .tki_brand .tki_logo {
-    width: 150px;
+    width: 180px;
     display: inline-block;
     position: relative;
     top: 0;
@@ -263,22 +263,35 @@ td {
       position: absolute;
       top: 0;
       left: 0;
-      transition: all 250ms; }
+      transition: all 225ms ease-out;
+      /* transition-timing-function: ease|linear|ease-in|ease-out|ease-in-out|cubic-bezier()|initial|inherit; */ }
     .tki_brand .tki_logo #logo-wht {
-      z-index: 3; }
+      z-index: 3;
+      left: 1px;
+      top: 1px; }
     .tki_brand .tki_logo #logo-red {
-      z-index: 2; }
+      z-index: 2;
+      left: 0px;
+      top: 0; }
     .tki_brand .tki_logo #logo-blk {
-      z-index: 1; }
+      z-index: 1;
+      left: -1px;
+      top: -1px; }
     .tki_brand .tki_logo:hover #logo-wht {
       left: 4px;
-      top: -4px; }
+      top: 4px;
+      -webkit-transform: rotate(0.5deg);
+              transform: rotate(0.5deg); }
     .tki_brand .tki_logo:hover #logo-red {
-      left: -4px;
-      top: 4px; }
+      left: -1px;
+      top: -1;
+      -webkit-transform: rotate(1deg);
+              transform: rotate(1deg); }
     .tki_brand .tki_logo:hover #logo-blk {
-      left: -4px;
-      top: -4px; }
+      left: -6px;
+      top: -6px;
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg); }
 
 .tki_nav {
   display: inline-block;
