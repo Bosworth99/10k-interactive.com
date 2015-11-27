@@ -38,9 +38,13 @@ define(function (require) {
 
     //Abstract.prototype.listenTo         = Dispatcher.bus.listenTo;
     //Abstract.prototype.stopListening    = Dispatcher.bus.stopListening;
-    Abstract.prototype.Backbone         = Backbone;
-    Abstract.prototype.Model            = Backbone.Model;
-    Abstract.prototype.View             = Backbone.View;
+
+    var obj = {bar:'foo'};
+
+    Abstract.prototype.Backbone         = _.extend(Backbone, obj);
+    Abstract.prototype.Store            = _.extend(Backbone.Model, obj);
+    Abstract.prototype.Model            = _.extend(Backbone.Model, obj);
+    Abstract.prototype.View             = _.extend(Backbone.View, obj);
 
     Abstract.prototype.Marionette       = Marionette;
     Abstract.prototype.App              = Marionette.Application;
@@ -50,7 +54,7 @@ define(function (require) {
         _.extend.apply(this, [options]);
     };
 
-    console.log('Abstract :%o', new Abstract() );
+    //console.log('Abstract :%o', new Abstract() );
 
     return new Abstract();
 

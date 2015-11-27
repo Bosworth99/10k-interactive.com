@@ -33,7 +33,7 @@ define(function (require) {
 
         onAttach : function(){
 
-            this.$background = this.$el.find('.tki_background');
+            this.$background = this.$el.find('.k10_background');
 
             this.$img1 = this.$background.find('[data-img="one"]');
             this.$img2 = this.$background.find('[data-img="two"]');
