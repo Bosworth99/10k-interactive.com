@@ -8,6 +8,8 @@ define(function (require) {
     var Utility         = require('utility');
     var Config          = require('config');
 
+    var k10             = require('abstract');
+
     // @includes
     var Backbone        = require('backbone');
     var Marionette      = require('backbone.marionette');
@@ -68,7 +70,7 @@ define(function (require) {
         },
 
         start: function () {
-            //console.log('App::start %o', this);
+            console.log('App::start %o %o', this, k10);
 
             Backbone.history.start();
         }

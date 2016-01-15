@@ -9,12 +9,13 @@ define(function (require) {
     //var Dispatcher      = require('dispatcher');
 
     // CLASS //////////////////////////////////////////////////////////////////
-    var Klass =  k10.Model.extend({
+
+    var Klass =  k10.Store.extend({
 
         name : 'HeaderStore',
 
         initialize: function () {
-            //console.log('%s::initialize ', this.name );
+            console.log('%s::initialize %o', this.name, k10.Store.bar );
 
             this.set('init', true);
 

@@ -241,91 +241,91 @@ td {
   text-align: right;
   z-index: 999; }
 
-.tki_module {
+.k10_module {
   display: block;
   margin: 0;
   padding: 0;
   clear: both; }
 
-.tki_page {
+.k10_page {
   overflow: hidden; }
 
-.tki_brand {
+.k10_brand {
   float: left;
   display: inline-block; }
-  .tki_brand .tki_logo {
+  .k10_brand .k10_logo {
     width: 180px;
     display: inline-block;
     position: relative;
     top: 0;
     left: 5px; }
-    .tki_brand .tki_logo img {
+    .k10_brand .k10_logo img {
       position: absolute;
       top: 0;
       left: 0;
       transition: all 225ms ease-out;
       /* transition-timing-function: ease|linear|ease-in|ease-out|ease-in-out|cubic-bezier()|initial|inherit; */ }
-    .tki_brand .tki_logo #logo-wht {
+    .k10_brand .k10_logo #logo-wht {
       z-index: 3;
       left: 1px;
       top: 1px; }
-    .tki_brand .tki_logo #logo-red {
+    .k10_brand .k10_logo #logo-red {
       z-index: 2;
       left: 0px;
       top: 0; }
-    .tki_brand .tki_logo #logo-blk {
+    .k10_brand .k10_logo #logo-blk {
       z-index: 1;
       left: -1px;
       top: -1px; }
-    .tki_brand .tki_logo:hover #logo-wht {
+    .k10_brand .k10_logo:hover #logo-wht {
       left: 4px;
       top: 4px;
       -webkit-transform: rotate(0.5deg);
               transform: rotate(0.5deg); }
-    .tki_brand .tki_logo:hover #logo-red {
+    .k10_brand .k10_logo:hover #logo-red {
       left: -1px;
       top: -1;
       -webkit-transform: rotate(1deg);
               transform: rotate(1deg); }
-    .tki_brand .tki_logo:hover #logo-blk {
+    .k10_brand .k10_logo:hover #logo-blk {
       left: -6px;
       top: -6px;
       -webkit-transform: rotate(2deg);
               transform: rotate(2deg); }
 
-.tki_nav {
+.k10_nav {
   display: inline-block;
   position: absolute;
   top: 10px;
   right: 15px; }
 
-.tki_footer {
+.k10_footer {
   width: 100%; }
-  .tki_footer .tki_footer-content {
+  .k10_footer .k10_footer-content {
     display: inline-block; }
-  .tki_footer .tki_footer-contact a {
+  .k10_footer .k10_footer-contact a {
     display: inline-block;
     padding: 20px;
     font-size: 48px;
     line-height: 1em; }
-  .tki_footer .tki_colophon {
+  .k10_footer .k10_colophon {
     position: absolute;
     bottom: 10px;
     right: 10px;
     color: #fff; }
 
 /* shared */
-.tki_background {
+.k10_background {
   height: 100%;
   width: 100%; }
-  .tki_background .tki_background-inner {
+  .k10_background .k10_background-inner {
     overflow: hidden;
     height: 100%;
     width: 100%; }
-    .tki_background .tki_background-inner .tki_background-img {
+    .k10_background .k10_background-inner .k10_background-img {
       position: absolute;
       max-width: none; }
-    .tki_background .tki_background-inner .tki_background-filter {
+    .k10_background .k10_background-inner .k10_background-filter {
       position: absolute;
       background-color: transparent;
       height: 100%;
@@ -346,14 +346,14 @@ td {
   height: 100%;
   z-index: 10; }
 
-.tki_hero-layout {
+.k10_hero-layout {
   height: 250px;
   margin: auto 0;
   position: absolute;
   width: 100%;
   top: 0;
   bottom: 0; }
-  .tki_hero-layout h1 {
+  .k10_hero-layout h1 {
     color: white;
     font-size: 72px;
     text-align: center;
@@ -361,19 +361,19 @@ td {
     margin: 20px;
     text-shadow: 1px 1px 2px rgba(50, 50, 50, 0.4);
     transition: all 250ms; }
-    .tki_hero-layout h1:hover {
+    .k10_hero-layout h1:hover {
       color: red;
       text-shadow: 2px 2px 4px rgba(50, 50, 50, 0.6); }
     @media screen and (max-width: 768px) {
-      .tki_hero-layout h1 {
+      .k10_hero-layout h1 {
         font-size: 48px; } }
-  .tki_hero-layout p {
+  .k10_hero-layout p {
     color: white;
     text-align: center;
     font-size: 18px;
     margin: 20px; }
     @media screen and (max-width: 768px) {
-      .tki_hero-layout p {
+      .k10_hero-layout p {
         font-size: 14px; } }
 
 #page-home-bg {
