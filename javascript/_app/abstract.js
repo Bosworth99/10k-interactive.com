@@ -57,26 +57,4 @@ define(function (require) {
     //console.log('Abstract :%o', new Abstract() );
 
     return new Abstract();
-
-    //var instance              = new Abstract();
-
-    /*instance.publish          = function(options){
-        console.log('instance.publish %o', options);
-
-        Dispatcher.dispatch.call(this, options);
-    };
-
-    instance.subscribe        = function(action, callback){
-        Dispatcher.subscribe.call(this, action, callback);
-    };
-
-    instance.listenTo         = Dispatcher.bus.listenTo;
-    instance.stopListening    = Dispatcher.bus.stopListening;
-
-    instance.extend           = _.extend;
-
-    console.log('Abstract instance:%o', instance );
-
-    return instance;*/
-
 });
